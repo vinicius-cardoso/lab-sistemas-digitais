@@ -1,23 +1,26 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
 
-entity incrementador is
+entity comparador is
 	generic (
-    	DATA_WIDTH : natural := 16
+		DATA_WIDTH : natural := 16
     );
 
 	port (
-      a 		: in std_logic_vector((DATA_WIDTH - 1) downto 0);
-      result	: out std_logic_vector((DATA_WIDTH - 1) downto 0)
+      a : in std_logic_vector((DATA_WIDTH - 1) downto 0);
+      a_eq_0 : out std_logic
     );
+	
+end comparador;
 
-end entity;
-
-architecture behavior of incrementador is
+architecture behavior of comparador is
 begin
   process(a)
   begin
-    result <= std_logic_vector(unsigned(a) + 1);
-  end process;
+    if(a = x"0000") then
+      a_eq_0 <= '1';
+    else
+      a_eq_0 <= '0';
+  	end if;
+	end process;
 end behavior;
