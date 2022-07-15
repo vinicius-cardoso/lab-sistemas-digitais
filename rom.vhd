@@ -6,7 +6,7 @@ entity rom is
 	generic (
 		ADDR_LENGHT : natural := 2;
 		R_LENGHT : natural := 16;
-		NUM_OF_REGS : natural := 32
+		REGS : natural := 16
 	);
 	port (
 		clk : in std_logic;
@@ -17,8 +17,8 @@ entity rom is
 	);
 end entity;
 
-architecture rom_register of eeprom is
-	type rom_reg is array (0 to NUM_OF_REGS - 1) of
+architecture rom_register of rom is
+	type rom_reg is array (0 to REGS - 1) of
 	std_logic_vector(R_LENGHT - 1 downto 0);
 	signal rom_s : rom_reg;
 
