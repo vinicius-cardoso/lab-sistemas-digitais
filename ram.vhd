@@ -4,31 +4,31 @@ use ieee.std_logic_unsigned.all;
 
 entity ram is
   port(
-       data_in : in std_logic_vector(7 downto 0);
-       addressess : in std_logic_vector(7 downto 0);
-       w_r : in std_logic;
-       data_out : out std_logic_vector(7 downto 0)
+       DATA_IN : in std_logic_vector(7 downto 0);
+       ADDRESSES : in std_logic_vector(7 downto 0);
+       W_R : in std_logic;
+       DATA_OUT : out std_logic_vector(7 downto 0)
        );
 end entity;
 
 architecture behavior of ram is
 
-type mem is array (255 downto 0) of std_logic_vector(7 downto 0);
-signal MEMORY : mem;
+type MEM is array (255 downto 0) of std_logic_vector(7 downto 0);
+signal MEMORY : MEM;
 signal ADDRESS : integer range 0 to 255;
 
 begin
 
-  process(addressess, data_in, w_r)
+  process(ADDRESSES, DATA_IN, W_R)
   begin
 
-    ADDRESS <= conv_integer(addressess);
-    if(w_r='0') then
-      MEMORY(address) <= data_in;
-    elsif(w_r='1') then
-      data_out <= MEMORY(ADDRESS);
+    ADDRESS <= conv_integer(ADDRESSES);
+    if(W_R = '0') then
+      MEMORY(ADDRESS) <= DATA_IN;
+    elsif(W_R = '1') then
+      DATA_OUT <= MEMORY(ADDRESS);
     else
-      data_out <= "ZZZZZZZZ";
+      DATA_OUT <= "ZZZZZZZZ";
     end if;
   end process;
 

@@ -2,8 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
--- MEMÓRIA EEPROM
-entity eeprom IS
+entity rom is
 	generic (
 		ADDR_LENGHT : natural := 2;
 		R_LENGHT : natural := 16;

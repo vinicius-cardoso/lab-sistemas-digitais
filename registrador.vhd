@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity registrador is
-	generic (n : NATURAL := 10);
+	generic (n : natural := 10);
 	port (
 		entrada : in std_logic_vector(n - 1 downto 0);
 		clk : in std_logic;
